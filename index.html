@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>JIT Access for DbUp</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="css/cube.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Just-in-time access for DbUp</h2>
+				</section>
+
+				<section>
+					<h2>What is it?</h2>
+					<ul>
+						<li class="fragment">A fundamental security practice</li>
+						<li class="fragment">Privilege is granted for pre-determined periods of time</li>
+						<li class="fragment">Privilege is granted on an as-needed basis</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Who is impacted?</h2>
+					<p class="fragment"><img src="./img/everyone-professional1994.jpg" /></p>
+					<p class="fragment"><small>*Just database and software developers</small></p>
+				</section>
+
+				<section>
+					<h2>Why?</h2>
+					<ul>
+						<li class="fragment">Reduces risk</li>
+						<li class="fragment">Deployment changes are more auditable and traceable</li>
+						<li class="fragment">Compliant with recent <a target="_blank" href="https://myafweb.com/human_resources/policies_and_procedures/standards_library/sql_database_special_user_account_standard">company standards</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What does it mean for you*?</h2>
+					<p class="fragment">...an ever so slight change to Octopus Deploy</p>
+				</section>
+
+				<section>
+					<h2>A wild step appears!</h2>
+					<img src="./img/jit_step_in_octo.png" />
+				</section>
+				
+				<section>
+					<h4>Meanwhile, in your DbUp step...</h4>
+					<p>
+						<pre><code class="hljs">
+$username = $OctopusParameters['Octopus.Action[Get SQL Credentials].Output.Username']
+$password = $OctopusParameters['Octopus.Action[Get SQL Credentials].Output.Password']
+
+$connectionString = "Data Source=$DatabaseServer;Initial Catalog=YourDatabase;User Id=$username;Password=$password"
+& ".\Afc.Your.Database.exe" "$connectionString"
+						</code></pre>
+					</p>
+				</section>
+
+				<section>
+					<h2>Coming soon</h2>
+					<ul>
+						<li class="fragment">Friendly reminders</li>
+						<li class="fragment">ServiceNow knowledge article</li>
+						<li class="fragment">Hands-on workshop</li>
+					</ul>
+				</section>
+
+				<section>
+					<p>#squad</p>
+					<ul>
+						<li>Deborah Anderson</li>
+						<li>Joe Chaplin</li>
+						<li>Albert Pender</li>
+						<li>David Roberts</li>
+						<li>David Smith</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Q&amp;A</h2>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
